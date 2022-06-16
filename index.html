@@ -49,13 +49,13 @@
 		
 		<div class="calculadora">
 			<h1 style="color: white">Calculadora </h1>
-			<p id ="resultado">...</p>
+			<p id ="resultado"></p>
 		<table>
 			<tr>
-				<td><button class="botao" onclick="insere('C')">C</button></td>
-				<td><button class="botao" onclick="insere('<')"><</button></td>
+				<td><button class="botao" onclick="limpa()">C</button></td>
+				<td><button class="botao" onclick="apaga()"><</button></td>
 				<td><button class="botao" onclick="insere('/')">/</button></td>
-				<td><button class="botao" onclick="insere('X')">X</button></td>
+				<td><button class="botao" onclick="insere('*')">X</button></td>
 			</tr>
 			</tr>
 				<td><button class="botao" onclick="insere('1')">1</button></td>
@@ -75,7 +75,7 @@
 				<td><button class="botao" onclick="insere('7')">7</button></td>
 				<td><button class="botao" onclick="insere('8')">8</button></td>
 				<td><button class="botao" onclick="insere('9')">9</button></td>
-				<td rowspan="2"><button class="botao" style="height:100px" onclick="insere('=')">=</button></td>
+				<td rowspan="2"><button class="botao" style="height:100px" onclick="calcular()">=</button></td>
 			</tr>
 			</tr>
 				<tr>
@@ -93,7 +93,31 @@
 
 
 <script>
-	function insere(){
 
+	function apaga(){
+		var resultado = document.getElementById('resultado').innerHTML;
+		document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+	}
+
+	function insere(x){
+		var numero = document.getElementById('resultado').innerHTML;
+		document.getElementById('resultado').innerHTML = numero + x;
+
+	}
+
+	function limpa(){
+		document.getElementById('resultado').innerHTML ="";
+	}
+
+	function calcular(){
+		var resultado = document.getElementById('resultado').innerHTML;
+		
+		if(resultado){
+		document.getElementById('resultado').innerHTML = eval(resultado);
+
+		} else{
+
+			document.getElementById('resultado').innerHTML = "Falta itens";
+		}
 	}
 </script>
